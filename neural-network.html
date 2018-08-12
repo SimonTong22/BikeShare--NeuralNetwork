@@ -11751,7 +11751,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Your-first-neural-network">Your first neural network<a class="anchor-link" href="#Your-first-neural-network">&#182;</a></h1><p>In this project, you'll build your first neural network and use it to predict daily bike rental ridership. We've provided some of the code, but left the implementation of the neural network up to you (for the most part). After you've submitted this project, feel free to explore the data and the model more.</p>
+<h1 id="Bike-share">Bike share<a class="anchor-link" href="#Bike-share">&#182;</a></h1><p>I have implemented a neural network to predict bike share.</p>
 
 </div>
 </div>
@@ -11779,8 +11779,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-and-prepare-the-data">Load and prepare the data<a class="anchor-link" href="#Load-and-prepare-the-data">&#182;</a></h2><p>A critical step in working with neural networks is preparing the data correctly. Variables on different scales make it difficult for the network to efficiently learn the correct weights. Below, we've written the code to load and prepare the data. You'll learn more about this soon!</p>
-
+<h2 id="Load-and-prepare-the-data">Load and prepare the data<a class="anchor-link" href="#Load-and-prepare-the-data">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11959,8 +11958,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Checking-out-the-data">Checking out the data<a class="anchor-link" href="#Checking-out-the-data">&#182;</a></h2><p>This dataset has the number of riders for each hour of each day from January 1 2011 to December 31 2012. The number of riders is split between casual and registered, summed up in the <code>cnt</code> column. You can see the first few rows of the data above.</p>
-<p>Below is a plot showing the number of bike riders over the first 10 days in the data set. You can see the hourly rentals here. This data is pretty complicated! The weekends have lower over all ridership and there are spikes when people are biking to and from work during the week. Looking at the data above, we also have information about temperature, humidity, and windspeed, all of these likely affecting the number of riders. You'll be trying to capture all this with your model.</p>
+<h2 id="Checking-out-the-data">Checking out the data<a class="anchor-link" href="#Checking-out-the-data">&#182;</a></h2><p>This dataset has the number of riders for each hour of each day from January 1 2011 to December 31 2012. The number of riders is split between casual and registered, summed up in the <code>cnt</code> column.</p>
+<p>Below is a plot showing the number of bike riders over the first 10 days in the data set. You can see the hourly rentals here. The weekends have lower over all ridership and there are spikes when people are biking to and from work during the week. Looking at the data above, we also have information about temperature, humidity, and windspeed, all of these likely affecting the number of riders.</p>
 
 </div>
 </div>
@@ -13038,7 +13037,7 @@ height=263
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dummy-variables">Dummy variables<a class="anchor-link" href="#Dummy-variables">&#182;</a></h3><p>Here we have some categorical variables like season, weather, month. To include these in our model, we'll need to make binary dummy variables. This is simple to do with Pandas thanks to <code>get_dummies()</code>.</p>
+<h3 id="Dummy-variables">Dummy variables<a class="anchor-link" href="#Dummy-variables">&#182;</a></h3><p>Here we have some categorical variables like season, weather, month. To include these in our model, we'll need to make binary dummy variables.</p>
 
 </div>
 </div>
@@ -13321,25 +13320,15 @@ height=263
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Time-to-build-the-network">Time to build the network<a class="anchor-link" href="#Time-to-build-the-network">&#182;</a></h2><p>Below you'll build your network. We've built out the structure and the backwards pass. You'll implement the forward pass through the network. You'll also set the hyperparameters: the learning rate, the number of hidden units, and the number of training passes.</p>
-<p>The network has two layers, a hidden layer and an output layer. The hidden layer will use the sigmoid function for activations. The output layer has only one node and is used for the regression, the output of the node is the same as the input of the node. That is, the activation function is $f(x)=x$. A function that takes the input signal and generates an output signal, but takes into account the threshold, is called an activation function. We work through each layer of our network calculating the outputs for each neuron. All of the outputs from one layer become inputs to the neurons on the next layer. This process is called <em>forward propagation</em>.</p>
-<p>We use the weights to propagate signals forward from the input to the output layers in a neural network. We use the weights to also propagate error backwards from the output back into the network to update our weights. This is called <em>backpropagation</em>.</p>
-<blockquote><p><strong>Hint:</strong> You'll need the derivative of the output activation function ($f(x) = x$) for the backpropagation implementation. If you aren't familiar with calculus, this function is equivalent to the equation $y = x$. What is the slope of that equation? That is the derivative of $f(x)$.</p>
-</blockquote>
-<p>Below, you have these tasks:</p>
-<ol>
-<li>Implement the sigmoid function to use as the activation function. Set <code>self.activation_function</code> in <code>__init__</code> to your sigmoid function.</li>
-<li>Implement the forward pass in the <code>train</code> method.</li>
-<li>Implement the backpropagation algorithm in the <code>train</code> method, including calculating the output error.</li>
-<li>Implement the forward pass in the <code>run</code> method.</li>
-</ol>
+<h2 id="Time-to-build-the-network">Time to build the network<a class="anchor-link" href="#Time-to-build-the-network">&#182;</a></h2><p>The network has two layers, a hidden layer and an output layer. The hidden layer will use the sigmoid function for activations. The output layer has only one node and is used for the regression, the output of the node is the same as the input of the node. That is, the activation function is $f(x)=x$. A function that takes the input signal and generates an output signal, but takes into account the threshold, is called an activation function. We work through each layer of our network calculating the outputs for each neuron. All of the outputs from one layer become inputs to the neurons on the next layer (forward propagation).</p>
+<p>We use the weights to propagate signals forward from the input to the output layers in a neural network. We use the weights to also propagate error backwards from the output back into the network to update our weights (backpropagation).</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">NeuralNetwork</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -13361,7 +13350,6 @@ height=263
                                        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_nodes</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">learning_rate</span>
         
-        <span class="c1">#### Set this to your implemented sigmoid function ####</span>
         <span class="c1"># Activation function is the sigmoid function</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">activation_function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span>
@@ -13371,30 +13359,24 @@ height=263
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inputs_list</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">targets_list</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
         
-        <span class="c1">#### Implement the forward pass here ####</span>
         <span class="c1">### Forward pass ###</span>
-        <span class="c1"># TODO: Hidden layer</span>
         <span class="n">hidden_inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_input_to_hidden</span><span class="p">,</span><span class="n">inputs</span><span class="p">)</span>
         <span class="n">hidden_outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_function</span><span class="p">(</span><span class="n">hidden_inputs</span><span class="p">)</span>
         
-        <span class="c1"># TODO: Output layer</span>
+        <span class="c1"># Output layer</span>
         <span class="n">final_inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_hidden_to_output</span><span class="p">,</span><span class="n">hidden_outputs</span><span class="p">)</span><span class="c1"># signals into final output layer</span>
         <span class="n">final_outputs</span> <span class="o">=</span> <span class="n">final_inputs</span><span class="c1"># signals from final output layer</span>
         
-        <span class="c1">#### Implement the backward pass here ####</span>
         <span class="c1">### Backward pass ###</span>
         
-        <span class="c1"># TODO: Output error</span>
+        <span class="c1"># Output error</span>
         <span class="n">output_errors</span> <span class="o">=</span> <span class="n">targets</span> <span class="o">-</span> <span class="n">final_outputs</span><span class="c1"># Output layer error is the difference between desired target and actual output.</span>
-        <span class="c1">#output_grad = output_errors*final_outputs*(1-final_outputs) #Output error times gradient of output layer (giving error gradient)</span>
-        <span class="c1"># TODO: Backpropagated error</span>
+        <span class="c1"># output_grad = output_errors*final_outputs*(1-final_outputs) #Output error times gradient of output layer (giving error gradient)</span>
+        <span class="c1"># Backpropagated error</span>
         <span class="n">hidden_grad</span> <span class="o">=</span> <span class="n">hidden_outputs</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">hidden_outputs</span><span class="p">)</span><span class="c1"># hidden layer gradients</span>
         <span class="n">hidden_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_hidden_to_output</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">output_errors</span><span class="p">)</span><span class="c1"># errors propagated to the hidden layer</span>
         
-        <span class="c1">#hidden_grad = hidden_outputs*(1-hidden_outputs)# hidden layer gradients</span>
-        <span class="c1">#hidden_errors = np.dot(self.weights_hidden_to_output.T, output_errors)</span>
-        
-        <span class="c1"># TODO: Update the weights</span>
+        <span class="c1"># Update the weights</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">weights_hidden_to_output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">output_errors</span><span class="p">,</span><span class="n">hidden_outputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="c1"># update hidden-to-output weights with gradient descent step</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">weights_input_to_hidden</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">hidden_errors</span><span class="o">*</span><span class="n">hidden_grad</span><span class="p">,</span><span class="n">inputs</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="c1"># update input-to-hidden weights with gradient descent step</span>
  
@@ -13403,12 +13385,11 @@ height=263
         <span class="c1"># Run a forward pass through the network</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inputs_list</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
         
-        <span class="c1">#### Implement the forward pass here ####</span>
-        <span class="c1"># TODO: Hidden layer</span>
+        <span class="c1"># Hidden layer</span>
         <span class="n">hidden_inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_input_to_hidden</span><span class="p">,</span><span class="n">inputs</span><span class="p">)</span><span class="c1"># signals into hidden layer</span>
         <span class="n">hidden_outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_function</span><span class="p">(</span><span class="n">hidden_inputs</span><span class="p">)</span><span class="c1"># signals from hidden layer</span>
         
-        <span class="c1"># TODO: Output layer</span>
+        <span class="c1"># Output layer</span>
         <span class="n">final_inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_hidden_to_output</span><span class="p">,</span><span class="n">hidden_outputs</span><span class="p">)</span><span class="c1"># signals into final output layer</span>
         <span class="n">final_outputs</span> <span class="o">=</span> <span class="n">final_inputs</span><span class="c1"># signals from final output layer </span>
         
@@ -13439,11 +13420,11 @@ height=263
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Training-the-network">Training the network<a class="anchor-link" href="#Training-the-network">&#182;</a></h2><p>Here you'll set the hyperparameters for the network. The strategy here is to find hyperparameters such that the error on the training set is low, but you're not overfitting to the data. If you train the network too long or have too many hidden nodes, it can become overly specific to the training set and will fail to generalize to the validation set. That is, the loss on the validation set will start increasing as the training set loss drops.</p>
-<p>You'll also be using a method know as Stochastic Gradient Descent (SGD) to train the network. The idea is that for each training pass, you grab a random sample of the data instead of using the whole data set. You use many more training passes than with normal gradient descent, but each pass is much faster. This ends up training the network more efficiently. You'll learn more about SGD later.</p>
-<h3 id="Choose-the-number-of-epochs">Choose the number of epochs<a class="anchor-link" href="#Choose-the-number-of-epochs">&#182;</a></h3><p>This is the number of times the dataset will pass through the network, each time updating the weights. As the number of epochs increases, the network becomes better and better at predicting the targets in the training set. You'll need to choose enough epochs to train the network well but not too many or you'll be overfitting.</p>
-<h3 id="Choose-the-learning-rate">Choose the learning rate<a class="anchor-link" href="#Choose-the-learning-rate">&#182;</a></h3><p>This scales the size of weight updates. If this is too big, the weights tend to explode and the network fails to fit the data. A good choice to start at is 0.1. If the network has problems fitting the data, try reducing the learning rate. Note that the lower the learning rate, the smaller the steps are in the weight updates and the longer it takes for the neural network to converge.</p>
-<h3 id="Choose-the-number-of-hidden-nodes">Choose the number of hidden nodes<a class="anchor-link" href="#Choose-the-number-of-hidden-nodes">&#182;</a></h3><p>The more hidden nodes you have, the more accurate predictions the model will make. Try a few different numbers and see how it affects the performance. You can look at the losses dictionary for a metric of the network performance. If the number of hidden units is too low, then the model won't have enough space to learn and if it is too high there are too many options for the direction that the learning can take. The trick here is to find the right balance in number of hidden units you choose.</p>
+<h2 id="Training-the-network">Training the network<a class="anchor-link" href="#Training-the-network">&#182;</a></h2><p>Here we'll set the hyperparameters for the network. The strategy here is to find hyperparameters such that the error on the training set is low, but we're not overfitting to the data.</p>
+<p>We'll be using Stochastic Gradient Descent (SGD) to train the network. The idea is that for each training pass, we grab a random sample of the data instead of using the whole data set. We use many more training passes than with normal gradient descent, but each pass is much faster. This ends up training the network more efficiently.</p>
+<h3 id="Choose-the-number-of-epochs">Choose the number of epochs<a class="anchor-link" href="#Choose-the-number-of-epochs">&#182;</a></h3><p>This is the number of times the dataset will pass through the network, each time updating the weights. As the number of epochs increases, the network becomes better and better at predicting the targets in the training set.</p>
+<h3 id="Choose-the-learning-rate">Choose the learning rate<a class="anchor-link" href="#Choose-the-learning-rate">&#182;</a></h3><p>This scales the size of weight updates.</p>
+<h3 id="Choose-the-number-of-hidden-nodes">Choose the number of hidden nodes<a class="anchor-link" href="#Choose-the-number-of-hidden-nodes">&#182;</a></h3><p>The more hidden nodes we have, the more accurate predictions the model will make.</p>
 
 </div>
 </div>
@@ -14307,7 +14288,7 @@ height=252
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Check-out-your-predictions">Check out your predictions<a class="anchor-link" href="#Check-out-your-predictions">&#182;</a></h2><p>Here, use the test data to view how well your network is modeling the data. If something is completely wrong here, make sure each step in your network is implemented correctly.</p>
+<h2 id="Check-out-predictions">Check out predictions<a class="anchor-link" href="#Check-out-predictions">&#182;</a></h2><p>Here, we use the test data to view how well the network is modeling the data.</p>
 
 </div>
 </div>
@@ -16483,10 +16464,7 @@ height=272
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Thinking-about-your-results">Thinking about your results<a class="anchor-link" href="#Thinking-about-your-results">&#182;</a></h2><p>Answer these questions about your results. How well does the model predict the data? Where does it fail? Why does it fail where it does?</p>
-<blockquote><p><strong>Note:</strong> You can edit the text in this cell by double clicking on it. When you want to render the text, press control + enter</p>
-</blockquote>
-<h4 id="Your-answer-below">Your answer below<a class="anchor-link" href="#Your-answer-below">&#182;</a></h4><p>The model predicted the over patterns and shapes of the data pretty well, but it fails when the data has smaller values (lower amplitude). Changing some of the hyperparameters doesn't seem to improve the performance in that area, so it may just be a result of not having the right training data. Those days are holidays, so had lower ridership. I think having more training points for days with lower ridership(such as other holidays), or with a large change in ridership between days, may help.</p>
+<p>The model predicted the over patterns and shapes of the data pretty well, but it fails when the data has smaller values (lower amplitude). Changing some of the hyperparameters doesn't seem to improve the performance in that area, so it may just be a result of not having the right training data. Those days are holidays, so had lower ridership. I think having more training points for days with lower ridership(such as other holidays), or with a large change in ridership between days, may help.</p>
 
 </div>
 </div>
@@ -16496,7 +16474,7 @@ height=272
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Unit-tests">Unit tests<a class="anchor-link" href="#Unit-tests">&#182;</a></h2><p>Run these unit tests to check the correctness of your network implementation. These tests must all be successful to pass the project.</p>
+<h2 id="Unit-tests">Unit tests<a class="anchor-link" href="#Unit-tests">&#182;</a></h2><p>We run these unit tests to check the correctness of the network implementation.</p>
 
 </div>
 </div>
